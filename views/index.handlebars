@@ -1,0 +1,72 @@
+<nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand" href="#">
+        <img src="/docs/4.0/assets/brand/bootstrap-solid.svg" width="30" height="30" alt="">
+    </a>
+</nav>
+<div>
+    <ul class="nav flex-column">
+        <li class="nav-item">
+            <div class="btn-group">
+                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                    Techers
+                </button>
+                <div class="dropdown-menu">
+                    {{!-- {{#each Techers}}
+                    <button class="dropdown-item">{{}}</button>
+                    {{/each}} --}}
+                    <button class="dropdown-item" id="6th">6th</button>
+                    <button class="dropdown-item" id="7th">7th</button>
+                    <button class="dropdown-item" id="8th">8th</button>
+                </div>
+            </div>
+        </li>
+        <li class="nav-item">
+            <div class="btn-group">
+                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                    Grade Level
+                </button>
+                <div class="dropdown-menu">
+                    <button class="dropdown-item" id="6th">6th</button>
+                    <button class="dropdown-item" id="7th">7th</button>
+                    <button class="dropdown-item" id="8th">8th</button>
+                </div>
+            </div>
+        </li>
+        <li class="nav-item">
+            <div class="btn-group">
+                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                    Detentions
+                </button>
+                <div class="dropdown-menu">
+                    {{!-- {{#each Student}}
+                        {{#if Student.detention}}
+                            <a class="dropdown-item" href="#">{{}}</a>
+                        {{/if}}
+                    {{/eath}} --}}
+                    <button class="dropdown-item" id="6th">6th</button>
+                    <button class="dropdown-item" id="7th">7th</button>
+                    <button class="dropdown-item" id="8th">8th</button>
+                </div>
+            </div>
+        </li>
+        <li class="nav-item">
+            <div class="btn-group">
+                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                    Action
+                </button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Separated link</a>
+                </div>
+            </div>
+        </li>
+    </ul>
+    <button type="button" class="btn btn-success">Add</button>
+</div>
