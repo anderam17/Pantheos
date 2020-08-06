@@ -26,7 +26,7 @@ module.exports = function (sequelize, DataTypes) {
 
             detention: {
                 type: DataTypes.BOOLEAN,
-                default: false
+                defaultValue: false
             },
         }
     });
