@@ -13,9 +13,9 @@ app.use(express.static("public"));
 
 
 // * ROUTES
-require("./routes/html-routes.js")(app);
-require("./routes/teacher-api-routes.js")(app);
-require("./routes/student-api-routes.js")(app);
+require("./routes/html-routes")(app);
+require("./routes/teacher-api-routes")(app);
+require("./routes/student-api-routes")(app);
 
 // * SYNC SEQUELIZE
 
