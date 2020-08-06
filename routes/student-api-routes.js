@@ -15,9 +15,9 @@ module.exports = function(app) {
 
     app.post("/api/student", (req, res) => {
         Student.create({
-            first_name: req.first_name,
-            last_name: req.last_name,
-            grade: req.grade,
+            first_name: req.body.first_name,
+            last_name: req.body.last_name,
+            grade: req.body.grade,
             detention: req.detention
         }).then((student) => {
             res.json(student);
