@@ -1,10 +1,9 @@
 {
   "development": {
     "username": "root",
-    "password": "root",
+    "password": "Tomcat96!?",
     "database": "pantheosDB",
-    "host": "localhost",
-    "port": 8889,
+    "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "test": {

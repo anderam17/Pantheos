@@ -1,4 +1,3 @@
-// * DEPENDENCIES/set up express app
 const express = require("express");
 
 const app = express();
@@ -17,7 +16,6 @@ require("./routes/html-routes")(app);
 require("./routes/teacher-api-routes")(app);
 require("./routes/student-api-routes")(app);
 
-// * SYNC SEQUELIZE
 
 db.sequelize.sync().then(function() {
     app.listen(PORT, function() {

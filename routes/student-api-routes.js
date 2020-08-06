@@ -1,11 +1,10 @@
-var Student = require("../models/student.js"); 
+const { Student } = require("../models"); 
 
 module.exports = function(app) {
 
     //get
     app.get("/api/student", (req, res) => {
         Student.findAll().then((students) => {
-            if (err) throw err;
             res.json(students);
         }).catch((err) => {
             res.json(err);
@@ -18,14 +17,14 @@ module.exports = function(app) {
             first_name: req.body.first_name,
             last_name: req.body.last_name,
             grade: req.body.grade,
-            detention: req.detention
+            TeacherId: req.body.teacherId,
+            detention: req.body.detention
         }).then((student) => {
             res.json(student);
         }).catch((err) => {
             res.json(err);
         });
     });
-    //delete
     app.delete("/api/student/:id", (req, res) => {
         Student.destroy({
             where: {
