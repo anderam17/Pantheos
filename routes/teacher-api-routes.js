@@ -1,10 +1,22 @@
 var { Teacher }= require("../models"); 
 
 module.exports = function(app) {
+    //?????
+    app.get("/", (req, res) => {
+        Teacher.findAll({
+            raw: true
+        }).then((teachers) => {
+            const hbsObject = {teachers : teachers};
+            console.log(teachers);
+            res.render("index", hbsObject);
+        }).catch((err) => {
+            res.json(err);
+        });
+    });
+    
 //* get works
 app.get("/api/teacher", (req, res) => {
    Teacher.findAll().then((teachers) => {
-    if (err) throw err;
     res.json(teachers);
 }).catch((err) => {
     res.json(err);
