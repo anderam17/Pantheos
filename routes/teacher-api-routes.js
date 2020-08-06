@@ -1,7 +1,7 @@
-var Teacher = require("../models/teacher.js"); 
+var { Teacher }= require("../models"); 
 
 module.exports = function(app) {
-//get
+//* get works
 app.get("/api/teachers", (req, res) => {
    Teacher.findAll().then((teachers) => {
     if (err) throw err;
