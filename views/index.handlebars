@@ -1,23 +1,20 @@
-<nav class="navbar navbar-light bg-light">
-    <a class="navbar-brand" href="#">
-        <img src="/docs/4.0/assets/brand/bootstrap-solid.svg" width="30" height="30" alt="">
-    </a>
+<nav class="navbar navbar-dark bg-dark">
+    
 </nav>
+
 <div>
+    <h3>Filter Students By:</h3>
     <ul class="nav flex-column">
         <li class="nav-item">
             <div class="btn-group">
                 <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
                     aria-expanded="false">
-                    Techers
+                    Teachers
                 </button>
-                <div class="dropdown-menu">
-                    {{!-- {{#each Techers}}
-                    <button class="dropdown-item">{{}}</button>
-                    {{/each}} --}}
-                    <button class="dropdown-item" id="6th">6th</button>
-                    <button class="dropdown-item" id="7th">7th</button>
-                    <button class="dropdown-item" id="8th">8th</button>
+                <div class="dropdown-menu" id="teacherDropdown">
+                    {{#each teachers}}
+                    <button class="dropdown-item" data-id="{{id}}">{{first_name}} {{last_name}}</button>
+                    {{/each}}
                 </div>
             </div>
         </li>
@@ -28,9 +25,9 @@
                     Grade Level
                 </button>
                 <div class="dropdown-menu">
-                    <button class="dropdown-item" id="6th">6th</button>
-                    <button class="dropdown-item" id="7th">7th</button>
-                    <button class="dropdown-item" id="8th">8th</button>
+                    <button class="dropdown-item" data-id="6">6th</button>
+                    <button class="dropdown-item" data-id="7">7th</button>
+                    <button class="dropdown-item" data-id="8">8th</button>
                 </div>
             </div>
         </li>
@@ -41,32 +38,15 @@
                     Detentions
                 </button>
                 <div class="dropdown-menu">
-                    {{!-- {{#each Student}}
-                        {{#if Student.detention}}
-                            <a class="dropdown-item" href="#">{{}}</a>
-                        {{/if}}
-                    {{/eath}} --}}
-                    <button class="dropdown-item" id="6th">6th</button>
-                    <button class="dropdown-item" id="7th">7th</button>
-                    <button class="dropdown-item" id="8th">8th</button>
-                </div>
-            </div>
-        </li>
-        <li class="nav-item">
-            <div class="btn-group">
-                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                    aria-expanded="false">
-                    Action
-                </button>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Separated link</a>
+                    <button class="dropdown-item" data-detention="true">In Detention</button>
+                    <button class="dropdown-item" data-detention="false">Not In Detention</button>
                 </div>
             </div>
         </li>
     </ul>
+    <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search by student" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
     <button type="button" class="btn btn-success">Add</button>
 </div>
