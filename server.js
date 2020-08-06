@@ -10,9 +10,11 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
-require("./routes/html-routes.js")(app);
-require("./routes/teacher-api-routes.js")(app);
-require("./routes/student-api-routes.js")(app);
+
+// * ROUTES
+require("./routes/html-routes")(app);
+require("./routes/teacher-api-routes")(app);
+require("./routes/student-api-routes")(app);
 
 
 db.sequelize.sync().then(function() {
