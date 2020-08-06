@@ -1,7 +1,7 @@
-var Teacher = require("../models/teacher.js"); 
+var { Teacher }= require("../models"); 
 
 module.exports = function(app) {
-//get
+//* get works
 app.get("/api/teachers", (req, res) => {
    Teacher.findAll().then((teachers) => {
     if (err) throw err;
@@ -14,9 +14,9 @@ app.get("/api/teachers", (req, res) => {
 //create
 app.post("/api/teachers", (req,res) => {
     Teacher.create({
-        first_name: req.first_name,
-        last_name: req.last_name,
-        subject: req.subject
+        first_name: req.body.first_name,
+        last_name: req.body.last_name,
+        subject: req.body.subject
     }).then((teacher) => {
         res.json(teacher);
     }).catch((err) => {
