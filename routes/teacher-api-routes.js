@@ -1,10 +1,7 @@
-var {
-    Teacher,
-    Student
-} = require("../models");
+var { Teacher, Student } = require("../models");
 
 module.exports = function (app) {
-    // code to populate dropdown and render index
+// code to populate dropdown and render index
     app.get("/", (req, res) => {
         Teacher.findAll({
             raw: true
@@ -19,7 +16,7 @@ module.exports = function (app) {
         });
     });
 
-    // get 
+    // get
     app.get("/api/teacher", (req, res) => {
         Teacher.findAll({
             include: [Student]
@@ -30,22 +27,22 @@ module.exports = function (app) {
         });
     });
 
-    //get students by teacher
+    // get students by teacher
     app.get("/api/teacher/:id", (req, res) => {
-        Teacher.findOne({
+        Teacher.findAll({
             include: [Student],
             where: {
                 id: req.params.id
             }
         }).then((dbTeacher) => {
             console.log(dbTeacher);
-            res.json(dbTeacher)
+            res.json(dbTeacher);
         }).catch((err) => {
             res.json(err);
         });
     })
 
-    //create
+    // create
     app.post("/api/teacher", (req, res) => {
         Teacher.create({
             first_name: req.body.first_name,
@@ -58,7 +55,7 @@ module.exports = function (app) {
         });
     });
 
-    //delete
+    // delete
     app.delete("/api/teacher/:id", (req, res) => {
         Teacher.destroy({
             include: [Student],
@@ -72,5 +69,5 @@ module.exports = function (app) {
         });
     });
 
-    //update maybe later
+    // update maybe later
 };

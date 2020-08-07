@@ -1,16 +1,17 @@
 <div class="container row">
-    
-        <div class="bg-light nav flex-column col-md-3">
-            {{>side-bar}}
-         </div>     
 
-        <div class="col-md-9">
-            <h3>Students:</h3>
-            {{#each students}}
-            {{>student-card}}
-            {{/each}}
-        </div>
+    <div class="bg-light nav flex-column col-md-3">
+        {{>side-bar}}
+    </div>
 
-    
+    <div class="col-md-9" id="studentCard">
+        <h3>Students:</h3>
+        {{#each students}}
+        {{>student-card}}
+        {{/each}}
+    </div>
+
+
 
     </section>
+</div>
