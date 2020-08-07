@@ -22,14 +22,14 @@ module.exports = function (sequelize, DataTypes) {
             validate: {
                 min: 6,
                 max: 8
+            },    
         },
-        
+
         detention: {
             type: DataTypes.BOOLEAN,
             defaultValue: false
             },
-        }
-    });
+        });
 
     Student.associate = function (models) {
         Student.belongsTo(models.Teacher, {

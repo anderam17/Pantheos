@@ -2,7 +2,6 @@ const { Student } = require("../models");
 
 module.exports = function(app) {
 
-    //get
     app.get("/api/student", (req, res) => {
         Student.findAll().then((students) => {
             res.json(students);
@@ -10,7 +9,6 @@ module.exports = function(app) {
             res.json(err);
         });
     });
-    //create
 
     app.post("/api/student", (req, res) => {
         Student.create({
