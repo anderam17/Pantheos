@@ -63,7 +63,7 @@ $(document).ready(function () {
 
   const renderStudentCard = (teacher, student) => {
     $("#studentCard").append(
-      `<div class="card">
+      `<div data-id= "${student.id}" class="card">
         <div class="card-header">
         Name: ${student.first_name} ${student.last_name}
         </div>
@@ -81,6 +81,7 @@ $(document).ready(function () {
   };
 
   $("#studentCard").on("click", "#deleteBtn", function (event) {
+    event.preventDefault();
 
     const studentId = $(this).data("id")
 
@@ -88,7 +89,7 @@ $(document).ready(function () {
       type: "DELETE",
       data: studentId
     }).then(answer => {
-      location.reload();
+      $(`[data-id=${studentId}]`).remove();
     })
   })
 
