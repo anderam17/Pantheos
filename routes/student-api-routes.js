@@ -3,8 +3,8 @@ const {
     Teacher
 } = require("../models");
 
-module.exports = function (app) {
-    // get
+module.exports = function(app) {
+
     app.get("/api/student", (req, res) => {
         Student.findAll({
             include: [Teacher]

@@ -22,7 +22,7 @@ module.exports = function (sequelize, DataTypes) {
             validate: {
                 min: 6,
                 max: 8
-            }
+            },    
         },
 
         detention: {
