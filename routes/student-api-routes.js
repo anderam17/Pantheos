@@ -38,9 +38,9 @@ module.exports = function (app) {
         }).catch((err) => {
             res.json(err)
         });
-    })
+    }) 
 
-    // create
+    // create 
 
     app.post("/api/student", (req, res) => {
         Student.create({
