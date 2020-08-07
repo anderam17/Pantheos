@@ -1,5 +1,4 @@
-const {Student, Teacher
-} = require("../models");
+const {Student, Teacher} = require("../models");
 
 module.exports = function (app) {
   app.get("/api/student", (req, res) => {
@@ -28,7 +27,7 @@ module.exports = function (app) {
   });
 
   // get students by id
-  app.get("/api/student-search/:id", (req, res) => {
+  app.get("/api/studentsearch/:id", (req, res) => {
     Student.findOne({
       include: [Teacher],
       where: {
