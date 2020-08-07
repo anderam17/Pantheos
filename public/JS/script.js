@@ -44,18 +44,18 @@ $(document).ready(function () {
     // !! REST OF QUERY STRING NEEDS TO BE BUILT
     // const query = `api/student/${}`
     $("#studentCard").empty();
-    $.get(query, (data) => {
-      console.log(data);
-      if (data.length) {
-        for (let i = 0; i < data.length; i++) {
-          const teacher = data[i].Teacher;
-          const student = data[i];
-          renderStudentCard(teacher, student);
-        }
-      } else {
-        $("#studentCard").append(`${searchedStudent} in not in the database.`);
-      }
-    });
+    // $.get(query, (data) => {
+    //   console.log(data);
+    //   if (data.length) {
+    //     for (let i = 0; i < data.length; i++) {
+    //       const teacher = data[i].Teacher;
+    //       const student = data[i];
+    //       renderStudentCard(teacher, student);
+    //     }
+    //   } else {
+    //     $("#studentCard").append(`${searchedStudent} in not in the database.`);
+    //   }
+    // });
 
     $(".studentSearch").val("");
   });
