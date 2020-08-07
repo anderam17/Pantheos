@@ -1,4 +1,16 @@
 $(document).ready(function () {
+  // const getStudents = () => {
+  //   $.get("api/student", (data) => {
+  //     console.log(data);
+  //     for (let i = 0; i < data[0].Students.length; i++) {
+  //       const teacher = data[i].Teacher;
+  //       const student = data[i];
+  //       console.log(student);
+  //       renderStudentCard(teacher, student);
+  //     }
+  //   });
+  // };
+  
   $("#teacherSelect").on("change", function (event) {
     const teacherId = $(this).val();
     console.log(teacherId);
@@ -37,32 +49,27 @@ $(document).ready(function () {
     $("#gradeSelect").val("");
   });
 
-  $("#stuSearch").on("click", function (event) {
-    event.preventDefault();
-    const searchedStudent = $(".studentSearch").val();
-    console.log(searchedStudent);
-    // !! REST OF QUERY STRING NEEDS TO BE BUILT
-    // const query = `api/student/${}`
+  $("#student").on("change", function (event) {
+    const studentId = $(this).val();
+    console.log(studentId);
+    const query = `/api/student-search/${studentId}`;
+    console.log(query);
     $("#studentCard").empty();
-    // $.get(query, (data) => {
-    //   console.log(data);
-    //   if (data.length) {
-    //     for (let i = 0; i < data.length; i++) {
-    //       const teacher = data[i].Teacher;
-    //       const student = data[i];
-    //       renderStudentCard(teacher, student);
-    //     }
-    //   } else {
-    //     $("#studentCard").append(`${searchedStudent} in not in the database.`);
-    //   }
-    // });
+    $.get(query, (data) => {
+      console.log(data);
+      for (let i = 0; i < data.length; i++) {
+        const teacher = data.Teacher;
+        const student = data;
+        renderStudentCard(teacher, student);
+      }
+    });
 
-    $(".studentSearch").val("");
+    $("#student").val("");
   });
 
   const renderStudentCard = (teacher, student) => {
     $("#studentCard").append(
-      `<div class="card">
+      `<div class="card ">
         <div class="card-header">
         Name: ${student.first_name} ${student.last_name}
         </div>
@@ -71,20 +78,25 @@ $(document).ready(function () {
       <p class="card-text teacher">Teacher: ${teacher.first_name} ${teacher.last_name}</p>
       <p class="card-text studentDetention">In Detention?: ${student.detention}</p> 
 
-      <a href="/update.html" class="btn btn-primary" value=${student.id} id="edit">Edit</a>
-      <a href="#" class="btn btn-warning" value=${student.id}>Detention</a>
-      <a href="#" class="btn btn-danger" value=${student.id}>Delete</a>
+      <a href="editstudent.html" class="btn btn-primary" data-id=${student.id} id="edit">Edit</a>
+      <a href="#" class="btn btn-warning" data-id=${student.id}>Detention</a>
+      <a href="#" class="btn btn-danger" data-id=${student.id}>Delete</a>
       
       </div>
       </div>`);
   };
 
-  $("#edit").on("click", function(data) {
-    const studentId = $(this).val();
+  $("#studentCard").on("click", "#edit", function(event) {
+    const studentId = $(this).data("id");
+    console.log(studentId);
     const query = `/api/student/${studentId}`;
-
     $.get(query, (data) => {
       console.log(data);
+      for (let i = 0; i < data.length; i++) {
+        const teacher = data.Teacher;
+        const student = data;
+        renderStudentCard(teacher, student);
+      }
     });
   });
 
