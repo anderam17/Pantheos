@@ -1,14 +1,36 @@
-const { Student } = require("../models"); 
+const {
+    Student,
+    Teacher
+} = require("../models");
 
 module.exports = function(app) {
 
     app.get("/api/student", (req, res) => {
-        Student.findAll().then((students) => {
+        Student.findAll({
+            include: [Teacher]
+        }).then((students) => {
             res.json(students);
         }).catch((err) => {
             res.json(err);
         });
     });
+
+    // get students by grade
+    app.get("/api/student/:grade", (req, res) => {
+        Student.findAll({
+            include: [Teacher],
+            where: {
+                grade: req.params.grade
+            }
+        }).then((students) => {
+            console.log(students);
+            res.json(students);
+        }).catch((err) => {
+            res.json(err);
+        });
+    });
+
+    // create
 
     app.post("/api/student", (req, res) => {
         Student.create({
@@ -23,21 +45,23 @@ module.exports = function(app) {
             res.json(err);
         });
     });
+
     app.delete("/api/student/:id", (req, res) => {
         Student.destroy({
             where: {
                 id: req.params.id
             }
         }).then((students) => {
-        res.json(students);
-    }).catch((err) => {
-        res.json(err);
-    });
+            res.json(students);
+        }).catch((err) => {
+            res.json(err);
+        });
     });
 
-    //update
+    // update
     app.put("/api/student/:id", (req, res) => {
         Student.update(req.body, {
+            include: [Teacher],
             where: {
                 id: req.params.id
             }
@@ -48,4 +72,3 @@ module.exports = function(app) {
         });
     });
 };
-

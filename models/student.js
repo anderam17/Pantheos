@@ -28,8 +28,9 @@ module.exports = function (sequelize, DataTypes) {
         detention: {
             type: DataTypes.BOOLEAN,
             defaultValue: false
-            },
-        });
+        },
+
+    });
 
     Student.associate = function (models) {
         Student.belongsTo(models.Teacher, {
@@ -41,7 +42,3 @@ module.exports = function (sequelize, DataTypes) {
 
     return Student;
 };
-
-
-
-

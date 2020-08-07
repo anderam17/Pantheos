@@ -1,0 +1,42 @@
+<h3>Filter Students By:</h3>
+
+<div class="nav-item mb-1 p-2">
+  {{>teacher-dropdown}}
+</div>
+
+<div class="nav-item mb-1 p-2">
+  <select class="form-control custom-select-lg bg-primary text-white" id="gradeSelect">
+      <option value="">-- Grade --</option>
+      <option class="dropdown-item" value="6">6th</option>
+      <option class="dropdown-item" value="7">7th</option>
+      <option class="dropdown-item" value="8">8th</option>
+    </select>
+  {{!-- <div class="btn-group">
+    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+      aria-expanded="false">
+      Grade Level
+    </button>
+    <div class="dropdown-menu">
+      <span class="dropdown-item" data-id="6">6th</span>
+      <span class="dropdown-item" data-id="7">7th</span>
+      <span class="dropdown-item" data-id="8">8th</span>
+
+    </div> --}}
+  {{!-- </div> --}}
+</div>
+<div class="nav-item mb-1 p-2">
+  <select class="form-control custom-select-lg bg-primary text-white" id="teacherSelect">
+      <option value="">-- Detention --</option>
+      <option class="dropdown-item" value="true">Is In Detention</option>
+      <option class="dropdown-item" value="false">Is Not In Detention</option>
+    </select>
+</div>
+
+
+<form class="form-inline my-2 my-lg-0 mb-1 p-2">
+  <input class="form-control mr-sm-2 " type="search" placeholder="Search by student" aria-label="Search">
+  <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="stuSearch">Search</button>
+</form>
+
+<a class="btn btn-success mb-1 p-2" href="addStudent.html">Add New Student</a>
+<a class="btn btn-success mb-1 p-2" href="addteacher.html">Add New Teacher</a>

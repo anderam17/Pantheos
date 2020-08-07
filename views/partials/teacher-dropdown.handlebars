@@ -1,0 +1,18 @@
+{{!-- <div class="btn-group">
+  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+    aria-expanded="false">
+    Teachers
+  </button>
+  <div class="dropdown-menu" id="teacherDropdown">
+    {{#each teachers}}
+    <option class="dropdown-item teacher" data-id="{{id}}">{{first_name}} {{last_name}}</option>
+    {{/each}}
+  </div>
+</div> --}}
+
+<select class="form-control custom-select-lg bg-primary text-white" id="teacherSelect">
+  <option value="">-- Teacher --</option>
+  {{#each teachers}}
+    <option class="dropdown-item teacher" value="{{id}}">{{first_name}} {{last_name}}</option>
+  {{/each}}
+</select>
