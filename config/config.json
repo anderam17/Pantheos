@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "ENter$22",
+    "password": null,
     "database": "pantheosDB",
     "host": "127.0.0.1",
     "dialect": "mysql"
