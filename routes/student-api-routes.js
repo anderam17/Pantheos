@@ -1,10 +1,10 @@
-const { Student } = require("../models"); 
+const { Student, Teacher } = require("../models"); 
 
 module.exports = function(app) {
 
     //get
     app.get("/api/student", (req, res) => {
-        Student.findAll().then((students) => {
+        Student.findAll({include: [Teacher]}).then((students) => {
             res.json(students);
         }).catch((err) => {
             res.json(err);
@@ -25,6 +25,7 @@ module.exports = function(app) {
             res.json(err);
         });
     });
+    
     app.delete("/api/student/:id", (req, res) => {
         Student.destroy({
             where: {
@@ -40,6 +41,7 @@ module.exports = function(app) {
     //update
     app.put("/api/student/:id", (req, res) => {
         Student.update(req.body, {
+            include: [Teacher],
             where: {
                 id: req.params.id
             }
