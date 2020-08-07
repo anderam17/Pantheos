@@ -1,11 +1,8 @@
-const {
-    Student,
-    Teacher
+const {Student, Teacher
 } = require("../models");
 
-module.exports = function(app) {
-
-    app.get("/api/student", (req, res) => {
+module.exports = function (app) {
+  app.get("/api/student", (req, res) => {
         Student.findAll({
             include: [Teacher]
         }).then((students) => {
