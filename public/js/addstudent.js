@@ -19,4 +19,4 @@ $("#add-btn").on("click", event => {
     $("#last_name").val("");
     $("#grade").val("6");
     $("#detention").val("False")
-})
+});

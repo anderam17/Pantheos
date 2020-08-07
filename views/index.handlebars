@@ -1,52 +1,17 @@
-<nav class="navbar navbar-dark bg-dark">
+<div class="container row">
 
-</nav>
+    <div class="bg-light nav flex-column col-md-3">
+        {{>side-bar}}
+    </div>
 
-<div>
-    <h3>Filter Students By:</h3>
-    <ul class="nav flex-column">
-        <li class="nav-item">
-            <div class="btn-group">
-                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                    aria-expanded="false">
-                    Teachers
-                </button>
-                <div class="dropdown-menu" id="teacherDropdown">
-                    {{#each teachers}}
-                    <button class="dropdown-item" data-id="{{id}}">{{first_name}} {{last_name}}</button>
-                    {{/each}}
-                </div>
-            </div>
-        </li>
-        <li class="nav-item">
-            <div class="btn-group">
-                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                    aria-expanded="false">
-                    Grade Level
-                </button>
-                <div class="dropdown-menu">
-                    <button class="dropdown-item" data-id="6">6th</button>
-                    <button class="dropdown-item" data-id="7">7th</button>
-                    <button class="dropdown-item" data-id="8">8th</button>
-                </div>
-            </div>
-        </li>
-        <li class="nav-item">
-            <div class="btn-group">
-                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                    aria-expanded="false">
-                    Detentions
-                </button>
-                <div class="dropdown-menu">
-                    <button class="dropdown-item" data-detention="true">In Detention</button>
-                    <button class="dropdown-item" data-detention="false">Not In Detention</button>
-                </div>
-            </div>
-        </li>
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search by student" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
-    <button type="button" class="btn btn-success">Add</button>
+    <div class="col-md-9" id="studentCard">
+        <h3>Students:</h3>
+        {{#each students}}
+        {{>student-card}}
+        {{/each}}
+    </div>
+
+
+
+    </section>
 </div>
