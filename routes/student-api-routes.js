@@ -27,7 +27,20 @@ module.exports = function (app) {
         });
     });
 
-    // create
+    app.get("/api/student/:id", (req, res) => {
+        student.findOne({
+            incude: [Teacher], 
+            where: {
+                id: req.params.id
+            }
+        }).then(student => {
+            res.json(student);
+        }).catch((err) => {
+            res.json(err)
+        });
+    }) 
+
+    // create 
 
     app.post("/api/student", (req, res) => {
         Student.create({
