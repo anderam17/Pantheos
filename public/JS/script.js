@@ -39,12 +39,28 @@ $(document).ready(function () {
 
   $("#stuSearch").on("click", function (event) {
     event.preventDefault();
+    const searchedStudent = $(".studentSearch").val();
+    console.log(searchedStudent);
+    // !! REST OF QUERY STRING NEEDS TO BE BUILT
+    // const query = `api/student/${}`
+    $("#studentCard").empty();
+    $.get(query, (data) => {
+      console.log(data);
+      if (data.length) {
+        for (let i = 0; i < data.length; i++) {
+          const teacher = data[i].Teacher;
+          const student = data[i];
+          renderStudentCard(teacher, student);
+        }
+      } else {
+        $("#studentCard").append(`${searchedStudent} in not in the database.`);
+      }
+    });
 
-
-  })
+    $(".studentSearch").val("");
+  });
 
   const renderStudentCard = (teacher, student) => {
-
     $("#studentCard").append(
       `<div class="card">
         <div class="card-header">
@@ -55,14 +71,22 @@ $(document).ready(function () {
       <p class="card-text teacher">Teacher: ${teacher.first_name} ${teacher.last_name}</p>
       <p class="card-text studentDetention">In Detention?: ${student.detention}</p> 
 
-      <a href="#" class="btn btn-primary">Edit</a>
-      <a href="#" class="btn btn-warning">Detention</a>
-      <a href="#" class="btn btn-danger">Delete</a>
+      <a href="/update.html" class="btn btn-primary" value=${student.id} id="edit">Edit</a>
+      <a href="#" class="btn btn-warning" value=${student.id}>Detention</a>
+      <a href="#" class="btn btn-danger" value=${student.id}>Delete</a>
       
       </div>
       </div>`);
-  }
+  };
+
+  $("#edit").on("click", function(data) {
+    const studentId = $(this).val();
+    const query = `/api/student/${studentId}`;
+
+    $.get(query, (data) => {
+      console.log(data);
+    });
+  });
 
   // add clear functions
-
 });
