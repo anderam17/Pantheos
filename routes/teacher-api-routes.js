@@ -4,7 +4,6 @@ module.exports = function(app) {
 //* get works
 app.get("/api/teacher", (req, res) => {
    Teacher.findAll().then((teachers) => {
-    if (err) throw err;
     res.json(teachers);
 }).catch((err) => {
     res.json(err);

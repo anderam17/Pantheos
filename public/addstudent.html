@@ -63,14 +63,14 @@
   </div>
 
   <script src="js/addstudent.js" type="text/javascript"></script>
-  
+
   <script type="text/javascript">
     $.ajax({
       method: "GET",
       url: "/api/teacher"
     }).then(teachers => {
-      for (const teacher  of teacher) {
-        $("#teacher").append(`<option value=${teacher.id}>${teacher.first_name}</option>`)
+      for (const teacher  of teachers) {
+        $("#teacher").append(`<option value=${teacher.id}>${teacher.first_name} ${teacher.last_name}</option>`)
       }
     })
   </script>
