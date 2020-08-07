@@ -37,7 +37,7 @@ module.exports = function(app) {
             first_name: req.body.first_name,
             last_name: req.body.last_name,
             grade: req.body.grade,
-            TeacherId: req.body.teacherId,
+            TeacherId: req.body.TeacherId,
             detention: req.body.detention
         }).then((student) => {
             res.json(student);
