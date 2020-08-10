@@ -1,17 +1,16 @@
 $(document).ready(function () {
-
   $("#teacherSelect").on("change", function (event) {
     const teacherId = $(this).val();
     console.log(teacherId);
-    const query = `/api/teacher/${teacherId}`
+    const query = `/api/teacher/${teacherId}`;
     console.log(query);
 
     $("#studentCard").empty();
     $.get(query, (data) => {
       console.log(data);
       for (let i = 0; i < data[0].Students.length; i++) {
-        let student = data[0].Students[i];
-        let teacher = data[0];
+        const student = data[0].Students[i];
+        const teacher = data[0];
         console.log(student);
         renderStudentCard(teacher, student);
       }
@@ -23,7 +22,7 @@ $(document).ready(function () {
   $("#gradeSelect").on("change", function (event) {
     const gradeId = $(this).val();
     console.log(gradeId);
-    const query = `/api/student/${gradeId}`
+    const query = `/api/student/${gradeId}`;
     console.log(query);
     $("#studentCard").empty();
     $.get(query, (data) => {
@@ -38,28 +37,45 @@ $(document).ready(function () {
     $("#gradeSelect").val("");
   });
 
-  $("#stuSearch").on("click", function (event) {
+  // when you search 1 student
+  $("#stuSearch").on("click", (event) => {
     event.preventDefault();
-    const searchedStudent = $(".studentSearch").val();
-    console.log(searchedStudent);
-    // !! REST OF QUERY STRING NEEDS TO BE BUILT
-    // const query = `api/student/${}`
-    $("#studentCard").empty();
-    // $.get(query, (data) => {
-    //   console.log(data);
-    //   if (data.length) {
-    //     for (let i = 0; i < data.length; i++) {
-    //       const teacher = data[i].Teacher;
-    //       const student = data[i];
-    //       renderStudentCard(teacher, student);
-    //     }
-    //   } else {
-    //     $("#studentCard").append(`${searchedStudent} in not in the database.`);
-    //   }
-    // });
+    event.stopImmediatePropagation();
+    const firstName = $("#search-first-name").val().trim();
+    const lastName = $("#search-last-name").val().trim();
 
-    $(".studentSearch").val("");
+    if (firstName != "" && lastName != "") {
+      $("#studentCard").empty();
+      const query = `/student/${firstName}/${lastName}`;
+      queryStu(query);
+      $("#search-first-name").val("");
+      $("#search-last-name").val("");
+    } else if (firstName === "" && lastName != "") {
+      $("#studentCard").empty();
+      const query = `/student/last/${lastName}`;
+      queryStu(query);
+      $("#search-first-name").val("");
+      $("#search-last-name").val("");
+    } else if (lastName === "" && firstName != "") {
+      $("#studentCard").empty();
+      const query = `/student/first/${firstName}`;
+      queryStu(query);
+      $("#search-first-name").val("");
+      $("#search-last-name").val("");
+    } else {
+      alert("You must enter either a first or last name to search.");
+    }
   });
+
+  const queryStu = function (query) {
+    $.get(query, (data) => {
+      data.forEach((stu) => {
+        const student = stu;
+        const teacher = stu.Teacher;
+        renderStudentCard(teacher, student);
+      });
+    });
+  };
 
   const renderStudentCard = (teacher, student) => {
     $("#studentCard").append(
@@ -82,16 +98,15 @@ $(document).ready(function () {
 
   $("#studentCard").on("click", "#deleteBtn", function (event) {
     event.preventDefault();
-
-    const studentId = $(this).data("id")
+    const studentId = $(this).data("id");
 
     $.ajax("api/student/" + studentId, {
       type: "DELETE",
       data: studentId
     }).then(answer => {
       $(`[data-id=${studentId}]`).remove();
-    })
-  })
+    });
+  });
 
   $("#edit").on("click", function (data) {
     const studentId = $(this).val();
