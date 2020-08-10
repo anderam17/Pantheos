@@ -11,6 +11,22 @@ module.exports = function (app) {
     });
   });
 
+  // get list of all students where detention =...
+  // returns a list as a JSON file to the front
+  app.get("/student/detention/:detention", (req, res) => {
+    Student.findAll({
+      include: [Teacher],
+      where: {
+        detention: req.params.detention
+      }
+    })
+      .then((students) => {
+        res.json(students);
+      }).catch((err) => {
+        res.json(err);
+      });
+  });
+
   // get students by grade
   app.get("/api/student/:grade", (req, res) => {
     Student.findAll({
