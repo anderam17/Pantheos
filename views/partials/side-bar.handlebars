@@ -4,7 +4,7 @@
   {{>teacher-dropdown}}
 </div>
 
-<div class="nav-item mb-1 p-2">
+<div class="nav-item mb-1 p-2 ">
   <select class="form-control custom-select-lg bg-primary text-white" id="gradeSelect">
     <option value="">-- Grade --</option>
     <option class="dropdown-item" value="6">6th</option>
@@ -21,17 +21,17 @@
 </div>
 <div class="nav-item mb-1 p-2">
   <form class="form-inline my-2 my-lg-0 mb-1 p-2">
-    <h5>Search By Student Name</h5>
-    <input class="form-control mr-sm-2 mb-1" id="search-first-name" type="search" placeholder="First Name"
+    <h5 class="mx-auto">Search By Student Name</h5>
+    <input class="form-control  mb-1" id="search-first-name" type="search" placeholder="First Name"
       aria-label="Search">
-    <input class="form-control mr-sm-2 mb-1" id="search-last-name" type="search" placeholder="Last Name"
+    <input class="form-control  mb-1" id="search-last-name" type="search" placeholder="Last Name"
       aria-label="Search">
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="stuSearch">Search</button>
+    <button class="btn btn-outline-success my-2 my-sm-0 sideBtn" type="submit" id="stuSearch">Search</button>
   </form>
 </div>
 
-<a class="btn btn-success mb-1 p-2 add" id="addStudent" href="addstudent.html">Add New Student</a>
-<a class="btn btn-success mb-1 p-2 add" href="addteacher.html">Add New Teacher</a>
+<a class="btn btn-success mb-1 p-2 add sideBtn" id="addStudent" href="addstudent.html">Add New Student</a>
+<a class="btn btn-success mb-1 p-2 add sideBtn" href="addteacher.html">Add New Teacher</a>
 
 {{!-- ajax calls --}}
 <script src="https://code.jquery.com/jquery.js"></script>
