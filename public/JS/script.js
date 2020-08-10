@@ -2,26 +2,14 @@ $(document).ready(function () {
   $("addStudent").on("click", (event) => {
     window.location.href = "/student";
   })
-
-  const gradeClass = (student) => {
-    let studentGrade = student.grade;
-
-    if (studentGrade === 6) {
-      $("#cardBody").addClass("sixth")
-    } else if (studentGrade === 7) {
-      $("#cardBody").addClass("seventh")
-    } else {
-      $("#cardBody").addClass("eighth")
-    }
-  }
-
-
+  
 
   // ------- SEARCH BY TEACHER ----------- 
   $("#teacherSelect").on("change", function (event) {
+    event.stopImmediatePropagation();
     const teacherId = $(this).val();
     console.log(teacherId);
-    const query = `/api/teacher/${teacherId}`
+    const query = `/api/teacher/${teacherId}`;
     console.log(query);
 
     $("#studentCard").empty();
@@ -33,7 +21,9 @@ $(document).ready(function () {
           let teacher = data[0];
           console.log(student);
           renderStudentCard(teacher, student);
-          gradeClass(student);
+          let grade= $(".studentGrade").data("grade");
+          console.log(grade);
+          gradeClass(grade);
         }
       } else {
         $("#studentCard").append(`<h4>This teacher has no students assigned to them.</h4>`)
@@ -45,9 +35,10 @@ $(document).ready(function () {
 
   // ------- SEARCH BY GRADE ----------- 
   $("#gradeSelect").on("change", function (event) {
+    event.stopImmediatePropagation();
     const gradeId = $(this).val();
     console.log(gradeId);
-    const query = `/api/student/${gradeId}`
+    const query = `/api/student/${gradeId}`;
     console.log(query);
     $("#studentCard").empty();
     $.get(query, (data) => {
@@ -56,7 +47,7 @@ $(document).ready(function () {
         const teacher = data[i].Teacher;
         const student = data[i];
         renderStudentCard(teacher, student);
-       
+
       }
     });
 
@@ -64,28 +55,50 @@ $(document).ready(function () {
   });
 
   // ------- SINGLE STUDENT SEARCH ----------- 
-  // $("#student").on("change", function (event) {
-  //   const studentId = $(this).val();
-  //   console.log(studentId);
-  //   const query = `/api/studentsearch/${studentId}`;
-  //   console.log(query);
-  //   $("#studentCard").empty();
+  $("#stuSearch").on("click", (event) => {
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    const firstName = $("#search-first-name").val().trim();
+    const lastName = $("#search-last-name").val().trim();
 
-  //   $.get(query, (data) => {
-  //     console.log(data);
-  //     const teacher = data.Teacher;
-  //     const student = data;
-  //     renderStudentCard(teacher, student);
-  //   });
+    if (firstName != "" && lastName != "") {
+      $("#studentCard").empty();
+      const query = `/student/${firstName}/${lastName}`;
+      queryStu(query);
+      $("#search-first-name").val("");
+      $("#search-last-name").val("");
+    } else if (firstName === "" && lastName != "") {
+      $("#studentCard").empty();
+      const query = `/student/last/${lastName}`;
+      queryStu(query);
+      $("#search-first-name").val("");
+      $("#search-last-name").val("");
+    } else if (lastName === "" && firstName != "") {
+      $("#studentCard").empty();
+      const query = `/student/first/${firstName}`;
+      queryStu(query);
+      $("#search-first-name").val("");
+      $("#search-last-name").val("");
+    } else {
+      alert("You must enter either a first or last name to search.");
+    }
+  });
 
-  //   $("#student").val("");
-  // });
+  const queryStu = function (query) {
+    $.get(query, (data) => {
+      data.forEach((stu) => {
+        const student = stu;
+        const teacher = stu.Teacher;
+        renderStudentCard(teacher, student);
+      });
+    });
+  };
 
   // ------- FUNCTION TO RENDER STUDENT CARDS ----------- 
   const renderStudentCard = (teacher, student) => {
 
     $("#studentCard").append(
-      `<div data-id= "${student.id}" class="card">
+      `<div data-id= "${student.id}" class="card mt-3">
         <div class="card-header">
         <h5>Student: ${student.first_name} ${student.last_name}</h5>
         </div>
@@ -106,8 +119,7 @@ $(document).ready(function () {
   // ------- DELETE STUDENT ----------- 
   $("#studentCard").on("click", "#deleteBtn", function (event) {
     event.preventDefault();
-
-    const studentId = $(this).data("id")
+    const studentId = $(this).data("id");
 
     $.ajax("api/student/" + studentId, {
       type: "DELETE",
@@ -152,5 +164,15 @@ $(document).ready(function () {
     });
   });
 
+  const gradeClass = () => {
+    if (grade === 6) {
+      $("#cardBody").addClass("sixth")
+    } else if (grade === 7) {
+      $("#cardBody").addClass("seventh")
+    } else {
+      $("#cardBody").addClass("eighth")
+    }
+
+  }
  
 });

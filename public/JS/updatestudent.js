@@ -1,17 +1,14 @@
 $(document).ready(function () {
- 
   const studentFirst = $("#first_name");
   const studentLast = $("#last_name");
   const studentGrade = $("#grade");
   const teacher = $("#teacher");
   const studentDetention = $("#detention");
-  
 
   const url = window.location.search;
   let studentId;
 
-  function handleFormSubmit() {
-
+  function handleFormSubmit () {
     if (!studentFirst.val().trim() || !studentLast.val().trim() || !studentGrade.val() || !teacher.val().trim() || !studentDetention.val().trim()) {
       return;
     }
@@ -24,21 +21,21 @@ $(document).ready(function () {
       detention: $("#detention").val()
     };
 
-    newStudent.id = studentId
+    newStudent.id = studentId;
     updateStudent(newStudent);
-    }
-
-  const getTeachers = () => {
-    $.ajax({
-      method: "GET",
-      url: "/api/teacher"
-    }).then(teachers => {
-      for (const teacher of teachers) {
-        $("#teacher").append(
-          `<option value=${teacher.id}> ${teacher.first_name} ${teacher.last_name}</option>`)
-      }
-    });
   }
+
+  // const getTeachers = () => {
+  //   $.ajax({
+  //     method: "GET",
+  //     url: "/api/teacher"
+  //   }).then(teachers => {
+  //     for (const teacher of teachers) {
+  //       $("#teacher").append(
+  //         `<option value=${teacher.id}> ${teacher.first_name} ${teacher.last_name}</option>`);
+  //     }
+  //   });
+  // };
 
   const getStudentData = (id) => {
     const queryUrl = "/api/studentsearch/" + id;
@@ -59,30 +56,31 @@ $(document).ready(function () {
       teacher.val(TeacherId);
 
       if (detention) {
-        studentDetention.val("true")
-      } else (
-        studentDetention.val("false")
-      )
+        studentDetention.val("true");
+      } else {
+        (
+          studentDetention.val("false")
+        );
+      }
     });
   };
 
-  const updateStudent =(student) => {
+  const updateStudent = (student) => {
     $.ajax({
       method: "PUT",
       url: "/api/student/" + studentId,
       data: student
     })
-      .then(function() {
+      .then(function () {
         window.location.href = "/";
       });
   };
-   
+
   if (url.indexOf("?student_id=") !== -1) {
     studentId = url.split("=")[1];
-    getTeachers();
+    // getTeachers();
     getStudentData(studentId);
-  };
-
+  }
 
   $("#updateStudent").on("click", "#add-btn", (event) => {
     event.preventDefault();

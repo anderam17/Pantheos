@@ -1,4 +1,4 @@
-const {Student, Teacher} = require("../models");
+const { Student, Teacher } = require("../models");
 
 module.exports = function (app) {
   app.get("/api/student", (req, res) => {
@@ -9,7 +9,7 @@ module.exports = function (app) {
     }).catch((err) => {
       res.json(err);
     });
-});
+  });
 
   // get students by grade
   app.get("/api/student/:grade", (req, res) => {
@@ -26,15 +26,55 @@ module.exports = function (app) {
     });
   });
 
-  // get students by id
   app.get("/api/studentsearch/:id", (req, res) => {
     Student.findOne({
-      include: [Teacher],
+      incude: [Teacher],
       where: {
         id: req.params.id
       }
+    }).then(student => {
+      res.json(student);
+    }).catch((err) => {
+      res.json(err);
+    });
+  });
+
+  // only first name given
+  app.get("/student/first/:first/", (req, res) => {
+    Student.findAll({
+      include: [Teacher],
+      where: {
+        first_name: req.params.first
+      }
     }).then((student) => {
-      console.log(student);
+      res.json(student);
+    }).catch((err) => {
+      res.json(err);
+    });
+  });
+
+  // only last name given
+  app.get("/student/last/:last", (req, res) => {
+    Student.findAll({
+      include: [Teacher],
+      where: {
+        last_name: req.params.last
+      }
+    }).then((student) => {
+      res.json(student);
+    }).catch((err) => {
+      res.json(err);
+    });
+  });
+  // first and last name given
+  app.get("/student/:first/:last", (req, res) => {
+    Student.findAll({
+      include: [Teacher],
+      where: {
+        first_name: req.params.first,
+        last_name: req.params.last
+      }
+    }).then((student) => {
       res.json(student);
     }).catch((err) => {
       res.json(err);
@@ -42,7 +82,6 @@ module.exports = function (app) {
   });
 
   // create
-
   app.post("/api/student", (req, res) => {
     Student.create({
       first_name: req.body.first_name,
@@ -77,8 +116,6 @@ module.exports = function (app) {
         id: req.params.id
       }
     }).then((student) => {
-      console.log(student);
-      
       res.json(student);
     }).catch((err) => {
       res.json(err);
