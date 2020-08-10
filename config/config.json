@@ -1,7 +1,12 @@
 {
   "development": {
     "username": "root",
+<<<<<<< HEAD
     "password": "ENter$22",
+=======
+    "password": "root",
+    "port": 8889,
+>>>>>>> 599d1034675e2b7357f7d959e3fd4625b6d29584
     "database": "pantheosDB",
     "host": "127.0.0.1",
     "dialect": "mysql"

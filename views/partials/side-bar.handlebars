@@ -19,12 +19,24 @@
     <option class="dropdown-item" value="false">Is Not In Detention</option>
   </select>
 </div>
+<div class="nav-item mb-1 p-2">
+  <select class="form-control custom-select-lg bg-primary text-white" id="student">
+    <option value="">-- Student --</option>
 
+  </select>
 
-<form class="form-inline my-2 my-lg-0 mb-1 p-2">
-  <input class="form-control mr-sm-2 studentSearch" type="search" placeholder="Search by student" aria-label="Search">
-  <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="stuSearch">Search</button>
-</form>
+  <form class="form-inline my-2 my-lg-0 mb-1 p-2">
+    <h5>Search By Student Name</h5>
+    <input class="form-control mr-sm-2" id="search-first-name" type="search" placeholder="First Name"
+      aria-label="Search">
+    <input class="form-control mr-sm-2" id="search-last-name" type="search" placeholder="Last Name" aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="stuSearch">Search</button>
+  </form>
+</div>
 
-<a class="btn btn-success mb-1 p-2 left" href="addStudent.html">Add New Student</a>
-<a class="btn btn-success mb-1 p-2 left" href="addteacher.html">Add New Teacher</a>
+<a class="btn btn-success mb-1 p-2" id="addStudent" href="addstudent.html">Add New Student</a>
+<a class="btn btn-success mb-1 p-2" href="addteacher.html">Add New Teacher</a>
+
+{{!-- ajax calls --}}
+<script src="https://code.jquery.com/jquery.js"></script>
+<script src="js/script.js"></script>
