@@ -50,22 +50,22 @@ $(document).ready(function () {
   });
 
   // ------- SINGLE STUDENT SEARCH ----------- 
-  $("#student").on("change", function (event) {
-    const studentId = $(this).val();
-    console.log(studentId);
-    const query = `/api/studentsearch/${studentId}`;
-    console.log(query);
-    $("#studentCard").empty();
+  // $("#student").on("change", function (event) {
+  //   const studentId = $(this).val();
+  //   console.log(studentId);
+  //   const query = `/api/studentsearch/${studentId}`;
+  //   console.log(query);
+  //   $("#studentCard").empty();
 
-    $.get(query, (data) => {
-      console.log(data);
-      const teacher = data.Teacher;
-      const student = data;
-      renderStudentCard(teacher, student);
-    });
+  //   $.get(query, (data) => {
+  //     console.log(data);
+  //     const teacher = data.Teacher;
+  //     const student = data;
+  //     renderStudentCard(teacher, student);
+  //   });
 
-    $("#student").val("");
-  });
+  //   $("#student").val("");
+  // });
 
   // ------- FUNCTION TO RENDER STUDENT CARDS ----------- 
   const renderStudentCard = (teacher, student) => {
