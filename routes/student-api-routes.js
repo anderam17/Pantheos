@@ -82,6 +82,7 @@ module.exports = function (app) {
       res.json(err);
     });
   });
+
   // first and last name given
   app.get("/student/:first/:last", (req, res) => {
     Student.findAll({
@@ -127,11 +128,24 @@ module.exports = function (app) {
   // update
   app.put("/api/student/:id", (req, res) => {
     Student.update(req.body, {
-      include: [Teacher],
       where: {
         id: req.params.id
       }
     }).then((student) => {
+      console.log("Student", student);
+      res.json(student);
+    }).catch((err) => {
+      res.json(err);
+    });
+  });
+
+  app.patch("/api/student/:id", (req, res) => {
+    Student.update(req.body, {
+      where: {
+        id: req.params.id
+      }
+    }).then((student) => {
+      console.log("Student", student);
       res.json(student);
     }).catch((err) => {
       res.json(err);

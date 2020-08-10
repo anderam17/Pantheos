@@ -25,17 +25,17 @@ $(document).ready(function () {
     updateStudent(newStudent);
   }
 
-  const getTeachers = () => {
-    $.ajax({
-      method: "GET",
-      url: "/api/teacher"
-    }).then(teachers => {
-      for (const teacher of teachers) {
-        $("#teacher").append(
-          `<option value=${teacher.id}> ${teacher.first_name} ${teacher.last_name}</option>`);
-      }
-    });
-  };
+  // const getTeachers = () => {
+  //   $.ajax({
+  //     method: "GET",
+  //     url: "/api/teacher"
+  //   }).then(teachers => {
+  //     for (const teacher of teachers) {
+  //       $("#teacher").append(
+  //         `<option value=${teacher.id}> ${teacher.first_name} ${teacher.last_name}</option>`);
+  //     }
+  //   });
+  // };
 
   const getStudentData = (id) => {
     const queryUrl = "/api/studentsearch/" + id;
@@ -78,7 +78,7 @@ $(document).ready(function () {
 
   if (url.indexOf("?student_id=") !== -1) {
     studentId = url.split("=")[1];
-    getTeachers();
+    // getTeachers();
     getStudentData(studentId);
   }
 
