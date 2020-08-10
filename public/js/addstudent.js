@@ -17,6 +17,7 @@ $("#add-btn").on("click", event => {
 
   $("#first_name").val("");
   $("#last_name").val("");
-  $("#grade").val("6");
-  $("#detention").val("False");
+  $("#grade").val("");
+  $("#teacher").val("");
+  $("#detention").val("");
 });

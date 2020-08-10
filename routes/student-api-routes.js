@@ -39,48 +39,47 @@ module.exports = function (app) {
     });
   });
 
- //only first name given
- app.get("/student/first/:first/",(req, res) => {
+  // only first name given
+  app.get("/student/first/:first/", (req, res) => {
     Student.findAll({
       include: [Teacher],
-        where: {
-            first_name: req.params.first
-        }
-    }).then((student) => {
-        res.json(student);
-    }).catch((err) => {
-        res.json(err);
-      });
-});
-
-//only last name given
-app.get("/student/last/:last",(req, res) => {
-  Student.findAll({
-    include: [Teacher],
       where: {
-          last_name: req.params.last
+        first_name: req.params.first
       }
-  }).then((student) => {
+    }).then((student) => {
       res.json(student);
-  }).catch((err) => {
+    }).catch((err) => {
       res.json(err);
     });
-});
-  //first and last name given
-  app.get("/student/:first/:last",(req, res) => {
-      Student.findAll({
-        include: [Teacher],
-          where: {
-              first_name: req.params.first,
-              last_name: req.params.last
-          }
-      }).then((student) => {
-          res.json(student);
-      }).catch((err) => {
-          res.json(err);
-        });
   });
 
+  // only last name given
+  app.get("/student/last/:last", (req, res) => {
+    Student.findAll({
+      include: [Teacher],
+      where: {
+        last_name: req.params.last
+      }
+    }).then((student) => {
+      res.json(student);
+    }).catch((err) => {
+      res.json(err);
+    });
+  });
+  // first and last name given
+  app.get("/student/:first/:last", (req, res) => {
+    Student.findAll({
+      include: [Teacher],
+      where: {
+        first_name: req.params.first,
+        last_name: req.params.last
+      }
+    }).then((student) => {
+      res.json(student);
+    }).catch((err) => {
+      res.json(err);
+    });
+  });
 
   // create
   app.post("/api/student", (req, res) => {
