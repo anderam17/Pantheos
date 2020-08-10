@@ -42,9 +42,10 @@ module.exports = function (app) {
     });
   });
 
+  // ------- GET SINGLE STUDENT INFO ----------- 
   app.get("/api/studentsearch/:id", (req, res) => {
     Student.findOne({
-      incude: [Teacher],
+      include: [Teacher],
       where: {
         id: req.params.id
       }
@@ -55,7 +56,7 @@ module.exports = function (app) {
     });
   });
 
-  // only first name given
+  // ------- GET STUDENT BY FIRST NAME ----------- 
   app.get("/student/first/:first/", (req, res) => {
     Student.findAll({
       include: [Teacher],
@@ -69,7 +70,7 @@ module.exports = function (app) {
     });
   });
 
-  // only last name given
+  // ------- GET STUDENT BY LAST NAME ----------- 
   app.get("/student/last/:last", (req, res) => {
     Student.findAll({
       include: [Teacher],
@@ -83,7 +84,7 @@ module.exports = function (app) {
     });
   });
 
-  // first and last name given
+  // ------- GET BY FIRST AND LAST NAME ----------- 
   app.get("/student/:first/:last", (req, res) => {
     Student.findAll({
       include: [Teacher],
@@ -98,7 +99,7 @@ module.exports = function (app) {
     });
   });
 
-  // create
+  // ------- ADD NEW STUDENT ----------- 
   app.post("/api/student", (req, res) => {
     Student.create({
       first_name: req.body.first_name,
@@ -113,6 +114,7 @@ module.exports = function (app) {
     });
   });
 
+  // ------- DELETE STUDENT ----------- 
   app.delete("/api/student/:id", (req, res) => {
     Student.destroy({
       where: {
@@ -125,30 +127,25 @@ module.exports = function (app) {
     });
   });
 
-  // update
+  // ------- UPDATE STUDENT ----------- 
   app.put("/api/student/:id", (req, res) => {
     Student.update(req.body, {
       where: {
         id: req.params.id
       }
     }).then((student) => {
-      console.log("Student", student);
-      res.json(student);
-    }).catch((err) => {
+      return Student.findOne({
+        where: {
+          id: req.params.id
+        }
+      })
+      }).then((student) => {
+        console.log(student)
+        res.json(student);
+      }).catch((err) => {
       res.json(err);
     });
   });
 
-  app.patch("/api/student/:id", (req, res) => {
-    Student.update(req.body, {
-      where: {
-        id: req.params.id
-      }
-    }).then((student) => {
-      console.log("Student", student);
-      res.json(student);
-    }).catch((err) => {
-      res.json(err);
-    });
-  });
+ 
 };

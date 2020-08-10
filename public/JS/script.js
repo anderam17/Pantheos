@@ -53,6 +53,7 @@ $(document).ready(function () {
 
     $("#gradeSelect").val("");
   });
+
 // ------- SEARCH BY DETENTION STATUS-----------
 $("#detentionSelect").on("change", (event) => {
   event.preventDefault();
@@ -122,8 +123,8 @@ $("#detentionSelect").on("change", (event) => {
         </div>
         <div class="card-body" id="cardBody">
       <p class="card-text studentGrade" data-grade=${student.grade}>Grade: ${student.grade}</p>
-      <p class="card-text teacher">Teacher: ${teacher.first_name} ${teacher.last_name}</p>
-      <p class="card-text studentDetention"> Detention: <span class="hasDetention"> ${student.detention? "Yes" : "No"}</span> </p> 
+      <p class="card-text teacher">Homeroom Teacher: ${teacher.first_name} ${teacher.last_name}</p>
+      <p class="card-text studentDetention">Detention: <span class="hasDetention"> ${student.detention? "Yes" : "No"}</span> </p> 
 
       <a class="btn btn-primary" data-id=${student.id} id="edit">Edit</a>
       <a class="btn btn-warning" data-id=${student.id} data-detention=${student.detention} id="detentionBtn" >Detention</a>
@@ -173,12 +174,12 @@ $("#detentionSelect").on("change", (event) => {
    };
 
     $.ajax("/api/student/" + studentId, {
-      type: "PATCH",
+      type: "PUT",
       data: hasDetentionState
     }).then(student => {
-      console.log(student);
+      $(this).data("detention", hasDetention);
       
-      $(`[data-id=${studentId}]`).children(".hasDetention").text(student.detention? "Yes" : "No");
+      $(`[data-id=${studentId}] .hasDetention`).text(student.detention? "Yes" : "No");
     });
   });
 
