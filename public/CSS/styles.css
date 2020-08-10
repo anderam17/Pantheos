@@ -26,3 +26,15 @@
 .add {
     width: 336.5px;
 }
+
+.sixth {
+    background-color: blue;
+}
+
+.seventh {
+    background-color: red;
+}
+
+.eighth {
+    background-color: green !important;
+}

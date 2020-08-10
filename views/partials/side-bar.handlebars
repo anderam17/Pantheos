@@ -13,23 +13,19 @@
   </select>
 </div>
 <div class="nav-item mb-1 p-2">
-  <select class="form-control custom-select-lg bg-primary text-white" id="teacherSelect">
+  <select class="form-control custom-select-lg bg-primary text-white" id="detentionSelect">
     <option value="">-- Detention --</option>
-    <option class="dropdown-item" value="true">Is In Detention</option>
-    <option class="dropdown-item" value="false">Is Not In Detention</option>
+    <option class="dropdown-item" value="1">Is In Detention</option>
+    <option class="dropdown-item" value="0">Is Not In Detention</option>
   </select>
 </div>
 <div class="nav-item mb-1 p-2">
-  <select class="form-control custom-select-lg bg-primary text-white" id="student">
-    <option value="">-- Student --</option>
-
-  </select>
-
   <form class="form-inline my-2 my-lg-0 mb-1 p-2">
     <h5>Search By Student Name</h5>
-    <input class="form-control mr-sm-2" id="search-first-name" type="search" placeholder="First Name"
+    <input class="form-control mr-sm-2 mb-1" id="search-first-name" type="search" placeholder="First Name"
       aria-label="Search">
-    <input class="form-control mr-sm-2" id="search-last-name" type="search" placeholder="Last Name" aria-label="Search">
+    <input class="form-control mr-sm-2 mb-1" id="search-last-name" type="search" placeholder="Last Name"
+      aria-label="Search">
     <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="stuSearch">Search</button>
   </form>
 </div>
