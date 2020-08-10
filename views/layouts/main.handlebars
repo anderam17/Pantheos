@@ -35,9 +35,24 @@ Albert Einstein</p>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
     integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
     crossorigin="anonymous"></script>
+    {{!-- jqueryUI --}}
+     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+     
     <script src="js/addstudent.js"></script>
     <script src="js/addteacher.js"></script>
     <script src="js/script.js"></script>
+    
+    <script type="text/javascript">
+    $.ajax({
+      method: "GET",
+      url: "/api/student"
+    }).then(students => {
+        const availableStudents= [];
+      for (const student  of students) {
+        $("#student").append(`<option value=${student.id}>${student.first_name} ${student.last_name}</option>`)
+      }
+    })
+  </script>
 </body>
 
 </html>
