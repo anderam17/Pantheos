@@ -1,10 +1,9 @@
 $(document).ready(function () {
   $("addStudent").on("click", (event) => {
     window.location.href = "/student";
-  })
-  
+  });
 
-  // ------- SEARCH BY TEACHER ----------- 
+  // ------- SEARCH BY TEACHER -----------
   $("#teacherSelect").on("change", function (event) {
     event.stopImmediatePropagation();
     const teacherId = $(this).val();
@@ -13,12 +12,13 @@ $(document).ready(function () {
     console.log(query);
 
     $("#studentCard").empty();
+    event.stopImmediatePropagation();
     $.get(query, (data) => {
       console.log(data);
       if (data[0].Students.length) {
         for (let i = 0; i < data[0].Students.length; i++) {
-          let student = data[0].Students[i];
-          let teacher = data[0];
+          const student = data[0].Students[i];
+          const teacher = data[0];
           console.log(student);
           renderStudentCard(teacher, student);
           let grade= $(".studentGrade").data("grade");
@@ -26,18 +26,19 @@ $(document).ready(function () {
           gradeClass(grade);
         }
       } else {
-        $("#studentCard").append(`<h4>This teacher has no students assigned to them.</h4>`)
+        $("#studentCard").append("<h4>This teacher has no students assigned to them.</h4>");
       }
     });
 
     $("#teacherSelect").val("");
   });
 
-  // ------- SEARCH BY GRADE ----------- 
+  // ------- SEARCH BY GRADE -----------
   $("#gradeSelect").on("change", function (event) {
     event.stopImmediatePropagation();
     const gradeId = $(this).val();
     console.log(gradeId);
+    event.stopImmediatePropagation();
     const query = `/api/student/${gradeId}`;
     console.log(query);
     $("#studentCard").empty();
@@ -54,7 +55,18 @@ $(document).ready(function () {
     $("#gradeSelect").val("");
   });
 
-  // ------- SINGLE STUDENT SEARCH ----------- 
+  // ------- SEARCH BY DETENTION STATUS-----------
+  $("#detentionSelect").on("change", (event) => {
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    const detention = event.target.value;
+    const query = `/student/detention/${detention}`;
+    $("#studentCard").empty();
+    queryStu(query);
+    $("#detentionSelect").val("");
+  });
+
+  // ------- SINGLE STUDENT SEARCH -----------
   $("#stuSearch").on("click", (event) => {
     event.preventDefault();
     event.stopImmediatePropagation();
@@ -94,7 +106,7 @@ $(document).ready(function () {
     });
   };
 
-  // ------- FUNCTION TO RENDER STUDENT CARDS ----------- 
+  // ------- FUNCTION TO RENDER STUDENT CARDS -----------
   const renderStudentCard = (teacher, student) => {
 
     $("#studentCard").append(
@@ -116,7 +128,7 @@ $(document).ready(function () {
       
   };
 
-  // ------- DELETE STUDENT ----------- 
+  // ------- DELETE STUDENT -----------
   $("#studentCard").on("click", "#deleteBtn", function (event) {
     event.preventDefault();
     const studentId = $(this).data("id");
@@ -129,7 +141,7 @@ $(document).ready(function () {
     });
   });
 
-  // ------- EDIT STUDENT CLICK EVENT----------- 
+  // ------- EDIT STUDENT CLICK EVENT-----------
 
   $("#studentCard").on("click", "#edit", function (event) {
     const studentId = $(this).data("id");
