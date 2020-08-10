@@ -33,9 +33,9 @@ module.exports = function (app) {
       where: {
         id: req.params.id
       }
-    }).then((students) => {
-      console.log(students);
-      res.json(students);
+    }).then((student) => {
+      console.log(student);
+      res.json(student);
     }).catch((err) => {
       res.json(err);
     });
@@ -76,8 +76,10 @@ module.exports = function (app) {
       where: {
         id: req.params.id
       }
-    }).then((students) => {
-      res.json(students);
+    }).then((student) => {
+      console.log(student);
+      
+      res.json(student);
     }).catch((err) => {
       res.json(err);
     });

@@ -1,4 +1,9 @@
 $(document).ready(function () {
+  $("addStudent").on("click", (event) => {
+    window.location.href = "/student";
+  })
+
+
 
   // ------- SEARCH BY TEACHER ----------- 
   $("#teacherSelect").on("change", function (event) {
@@ -10,11 +15,15 @@ $(document).ready(function () {
     $("#studentCard").empty();
     $.get(query, (data) => {
       console.log(data);
-      for (let i = 0; i < data[0].Students.length; i++) {
-        let student = data[0].Students[i];
-        let teacher = data[0];
-        console.log(student);
-        renderStudentCard(teacher, student);
+      if (data[0].Students.length) {
+        for (let i = 0; i < data[0].Students.length; i++) {
+          let student = data[0].Students[i];
+          let teacher = data[0];
+          console.log(student);
+          renderStudentCard(teacher, student);
+        }
+      } else {
+        $("#studentCard").append(`<h4>This teacher has no students assigned to them.</h4>`)
       }
     });
 
@@ -63,16 +72,16 @@ $(document).ready(function () {
     $("#studentCard").append(
       `<div data-id= "${student.id}" class="card">
         <div class="card-header">
-        Name: ${student.first_name} ${student.last_name}
+        <h5>Student: ${student.first_name} ${student.last_name}</h5>
         </div>
         <div class="card-body">
       <p class="card-text studentGrade">Grade: ${student.grade}</p>
       <p class="card-text teacher">Teacher: ${teacher.first_name} ${teacher.last_name}</p>
-      <p class="card-text studentDetention">In Detention?: ${student.detention}</p> 
+      <p class="card-text studentDetention"> Detention: ${student.detention? "Yes" : "No"}</p> 
 
-      <a href="/editstudent.html" class="btn btn-primary" data-id=${student.id} id="edit">Edit</a>
+      <a class="btn btn-primary" data-id=${student.id} id="edit">Edit</a>
       <a class="btn btn-warning" data-id=${student.id}>Detention</a>
-      <a class="btn btn-danger" data-id=${student.id}>Delete</a>
+      <a class="btn btn-danger" id = "deleteBtn" data-id=${student.id}>Delete</a>
       
       </div>
       </div>`);
@@ -92,11 +101,12 @@ $(document).ready(function () {
     });
   });
 
-  // ------- EDIT STUDENT ----------- 
-  $("#studentCard").on("click", "#edit", function(event) {
+  // ------- EDIT STUDENT CLICK EVENT----------- 
+
+  $("#studentCard").on("click", "#edit", function (event) {
     const studentId = $(this).data("id");
     console.log(studentId);
-    const query = `/api/student/${studentId}`;
-    // $.get(query, (data) => {});
+    window.location.href = "/editstudent?student_id=" + studentId;
   });
+
 });
