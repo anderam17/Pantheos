@@ -26,8 +26,8 @@ module.exports = function (app) {
     });
   });
 
-  app.get("/api/student/:id", (req, res) => {
-    student.findOne({
+  app.get("/api/studentsearch/:id", (req, res) => {
+    Student.findOne({
       incude: [Teacher],
       where: {
         id: req.params.id
@@ -115,8 +115,8 @@ module.exports = function (app) {
       where: {
         id: req.params.id
       }
-    }).then((students) => {
-      res.json(students);
+    }).then((student) => {
+      res.json(student);
     }).catch((err) => {
       res.json(err);
     });

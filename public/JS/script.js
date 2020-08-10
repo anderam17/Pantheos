@@ -99,7 +99,7 @@ $(document).ready(function () {
         <div class="card-body">
       <p class="card-text studentGrade">Grade: ${student.grade}</p>
       <p class="card-text teacher">Homeroom Teacher: ${teacher.first_name} ${teacher.last_name}</p>
-      <p class="card-text studentDetention">Has Detention?: ${student.detention}</p> 
+      <p class="card-text studentDetention"> Detention: ${student.detention? "Yes" : "No"}</p> 
 
       <a class="btn btn-primary" data-id=${student.id} id="edit">Edit</a>
       <a class="btn btn-warning" data-id=${student.id}>Detention</a>
