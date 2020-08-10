@@ -1,12 +1,8 @@
 {
   "development": {
     "username": "root",
-<<<<<<< HEAD
-    "password": "kimberly123",
-=======
     "password": "root",
     "port": 8080,
->>>>>>> master
     "database": "pantheosDB",
     "host": "127.0.0.1",
     "dialect": "mysql"
