@@ -12,7 +12,6 @@ $("#add-btn").on("click", event => {
   $.post("/api/student", newStudent)
     .then(data => {
       console.log(data);
-      alert("Student has been added");
     });
 
   $("#first_name").val("");

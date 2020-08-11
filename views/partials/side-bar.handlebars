@@ -5,18 +5,18 @@
 </div>
 
 <div class="nav-item mb-1 p-2 ">
-  <select class="form-control custom-select-lg bg-primary text-white" id="gradeSelect">
-    <option value="">-- Grade --</option>
+  <select class="form-control custom-select-lg" id="gradeSelect">
+    <option value="">Grade</option>
     <option class="dropdown-item" value="6">6th</option>
     <option class="dropdown-item" value="7">7th</option>
     <option class="dropdown-item" value="8">8th</option>
   </select>
 </div>
 <div class="nav-item mb-1 p-2">
-  <select class="form-control custom-select-lg bg-primary text-white" id="detentionSelect">
-    <option value="">-- Detention --</option>
-    <option class="dropdown-item" value="1">Is In Detention</option>
-    <option class="dropdown-item" value="0">Is Not In Detention</option>
+  <select class="form-control custom-select-lg" id="detentionSelect">
+    <option value="">Detention</option>
+    <option class="dropdown-item" value="1">Has Detention</option>
+    <option class="dropdown-item" value="0">Does Not Have Detention</option>
   </select>
 </div>
 <div class="nav-item mb-1 p-2">
@@ -26,12 +26,12 @@
       aria-label="Search">
     <input class="form-control  mb-1" id="search-last-name" type="search" placeholder="Last Name"
       aria-label="Search">
-    <button class="btn btn-outline-success my-2 my-sm-0 sideBtn" type="submit" id="stuSearch">Search</button>
+    <button class="btn my-2 my-sm-0 sideBtn" type="submit" id="stuSearch">Search</button>
   </form>
 </div>
 
-<a class="btn btn-success mb-1 p-2 add sideBtn" id="addStudent" href="addstudent.html">Add New Student</a>
-<a class="btn btn-success mb-1 p-2 add sideBtn" href="addteacher.html">Add New Teacher</a>
+<a class="btn  mb-1 p-2 sideBtn" id="addStudent" href="addstudent.html">Add New Student</a>
+<a class="btn  mb-1 p-2 sideBtn" href="addteacher.html">Add New Teacher</a>
 
 {{!-- ajax calls --}}
 <script src="https://code.jquery.com/jquery.js"></script>
