@@ -35,7 +35,6 @@ module.exports = function (app) {
         grade: req.params.grade
       }
     }).then((students) => {
-      console.log(students);
       res.json(students);
     }).catch((err) => {
       res.json(err);
@@ -135,12 +134,12 @@ module.exports = function (app) {
       }
     }).then((student) => {
       return Student.findOne({
+        include: [Teacher],
         where: {
           id: req.params.id
         }
       })
       }).then((student) => {
-        console.log(student)
         res.json(student);
       }).catch((err) => {
       res.json(err);

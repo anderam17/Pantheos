@@ -1,0 +1,57 @@
+<div class="modal" tabindex="-1" id="updateModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Update Student</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <form action="" method="POST" role="form">
+              <div class="form-group">
+                <label for="">First Name</label>
+                <input type="text" class="form-control" id="update_first_name" placeholder="">
+              </div>
+
+              <div class="form-group">
+                <label for="">Last Name</label>
+                <input type="text" class="form-control" id="update_last_name" placeholder="">
+              </div>
+              <div class="form-group">
+                <label for=""> Grade level</label>
+                <select class="custom-select" id="update_grade">
+                  <option value="">Grade</option>
+                  <option value="6"> 6th </option>
+                  <option value="7"> 7th </option>
+                  <option value="8"> 8th </option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for=""> Teacher Name</label>
+                <select class="custom-select" id="update-teacher">
+                  <option value="">Teacher</option>
+                </select>
+              </div>
+              <div class="form-group">
+                  <label for=""> In Detention</label>
+                <select class="custom-select" id="update-detention">
+                  <option value="">Detention</option>
+                  <option value="false">No</option>
+                  <option value="true">Yes</option>
+                </select>
+              </div>
+            </form>
+        
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn sideBtn btn-md" id="updateStudent">
+              Update Student</button>
+      </div>
+
+    </div>
+  </div>
+</div>

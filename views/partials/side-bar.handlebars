@@ -1,7 +1,9 @@
 <h3 class="left">Filter Students By:</h3>
 
 <div class="nav-item mb-1 p-2">
-  {{>teacher-dropdown}}
+  <select class="form-control  custom-select-lg" id="teacher">
+    <option value="">Teacher</option>
+  </select>
 </div>
 
 <div class="nav-item mb-1 p-2 ">
@@ -22,17 +24,12 @@
 <div class="nav-item mb-1 p-2">
   <form class="form-inline my-2 my-lg-0 mb-1 p-2">
     <h5 class="mx-auto">Search By Student Name</h5>
-    <input class="form-control  mb-1" id="search-first-name" type="search" placeholder="First Name"
-      aria-label="Search">
-    <input class="form-control  mb-1" id="search-last-name" type="search" placeholder="Last Name"
-      aria-label="Search">
+    <input class="form-control  mb-1" id="search-first-name" type="search" placeholder="First Name" aria-label="Search">
+    <input class="form-control  mb-1" id="search-last-name" type="search" placeholder="Last Name" aria-label="Search">
     <button class="btn my-2 my-sm-0 sideBtn" type="submit" id="stuSearch">Search</button>
   </form>
 </div>
 
-<a class="btn  mb-1 p-2 sideBtn" id="addStudent" href="addstudent.html">Add New Student</a>
-<a class="btn  mb-1 p-2 sideBtn" href="addteacher.html">Add New Teacher</a>
-
-{{!-- ajax calls --}}
-<script src="https://code.jquery.com/jquery.js"></script>
-<script src="JS/script.js"></script>
+<button class="btn  mb-1 p-2 sideBtn" type="button" data-toggle="modal" data-target="#studentModal">Add New Student</button>
+<button type="button" data-toggle="modal" class="btn  mb-1 p-2 sideBtn" data-target="#teacherModal" id="addNewTeachers">Add New
+  Teacher</button>
