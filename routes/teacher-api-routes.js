@@ -34,7 +34,6 @@ module.exports = function (app) {
         id: req.params.id
       }
     }).then((dbTeacher) => {
-      console.log(dbTeacher);
       res.json(dbTeacher);
     }).catch((err) => {
       res.json(err);

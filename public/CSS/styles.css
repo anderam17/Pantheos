@@ -18,18 +18,24 @@ h4, .lead{
 
 .yellow {
     background-color: #d6bc43;
-    color: white;
+    color: whitesmoke;
 }
 
 .red {
-    background-color: #e63640;
-    color: white;
+    background-color: #DC333D;
+    color: whitesmoke;
 }
 
 .blue {
-    background-color: #3071f2;
-    color: white;
+    background-color: #36ABD9;
+    color: whitesmoke;
 }
+
+.darkblue {
+    background-color: #2975D9;
+    color: whitesmoke;
+}
+
 
 h3, h5 {
     color: rgb(61, 61, 61);
@@ -64,12 +70,18 @@ header {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    background-image: url("../assets/dot-grid.jpg");
+    background-image: url("../images/dot-grid.jpg");
+    
 }
-
 
 .card {
     margin: 10px;
+    height: 300px;
+    
+}
+
+.card-header, .card-footer {
+    background-color: transparent;
 }
 
 .self-container {
@@ -77,19 +89,9 @@ header {
     margin: 10px 20px;
 }
 
-
-.sixth {
-    background-color: #3071f2;
-    color: whitesmoke;
-}
-
-.seventh {
-    background-color: #e63640;
-    color: whitesmoke;
-}
-
 .eighth {
-    background-color:#9fbea8;
+    background-color:#033473;
+    color: whitesmoke;
 }
 
 
@@ -123,15 +125,12 @@ header {
     color: #319DD2;
 }
 
-#add-btn {
-    width: 30%;
-}
-
 
 
 /* 
 yellow: #d6bc43
-blue: #3071f2
-red #e63640
+blue: #36ABD9
+red #DC333D
 teal: #319DD2
-green: #9fbea8 */
+green: #9fbea8 
+#36ABD9*/
