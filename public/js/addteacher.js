@@ -10,7 +10,6 @@ $("#add-btn").on("click", event => {
   $.post("/api/teacher", newTeacher)
     .then(data => {
       console.log(data);
-      alert("Teacher has been added");
     });
 
   $("#first_name").val("");

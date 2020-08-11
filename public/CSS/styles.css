@@ -1,13 +1,53 @@
-.left {
-    margin-left: .5rem;
-    margin-top: 5px;
+/* ------ GLOBAL ------- */
+
+.body {
+    margin: 0;
 }
 
-.card-body {
-    width: 300px;
-    height: 230px;
+.yellow {
+    background-color: #d6bc43;
+    color: white;
 }
 
+.red {
+    background-color: #e63640;
+    color: white;
+}
+
+.blue {
+    background-color: #3071f2;
+    color: white;
+}
+
+h3, h5 {
+    color: rgb(61, 61, 61);
+}
+
+/* ------ HEADER ------ */
+header {
+    margin: 0;
+}
+.jumbotron {
+    background-image: url("/images/books.jpg");
+    background-size: cover;
+    vertical-align: middle;
+    height: 400px;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: 100%;
+    background-size: cover;
+    position: relative;
+    margin-bottom: 0;
+}
+
+.jumbo-content {
+    background-color: rgba(32, 69, 138, 0.5);
+    padding: 20px;
+    color: white;
+}
+
+
+/* ------ CARDS ------ */
 #studentCard {
     display: flex;
     flex-wrap: wrap;
@@ -21,27 +61,64 @@
 
 .self-container {
     width: 100%;
-    margin-right: 20px;
-    margin-left: 20px;
+    margin: 10px 20px;
 }
 
-/* .add {
-    width: 336.5px;
-} */
 
 .sixth {
-    background-color: rgba(94, 94, 245, 0.75);
+    background-color: #3071f2;
+    color: whitesmoke;
 }
 
 .seventh {
-    background-color: rgba(231, 62, 62, 0.80);
+    background-color: #e63640;
+    color: whitesmoke;
 }
 
 .eighth {
-    background-color: rgba(0, 128, 0, 0.75);
+    background-color:#9fbea8;
 }
 
-.custom-select-lg, .sideBtn, #search-first-name, #search-last-name {
+
+
+/* ------ SIDEBAR ------ */
+.custom-select-lg,
+.sideBtn,
+#search-first-name,
+#search-last-name {
     width: 80%;
     margin: 0 auto;
 }
+
+.custom-select-lg, custom-select {
+    color: #319DD2;
+}
+
+.custom-select-lg:active {
+    background-color: transparent;
+    border-color: #319DD2;
+    color: #319DD2;
+}
+
+.sideBtn:hover {
+    background-color: #319DD2;
+    color: whitesmoke;
+}
+.sideBtn {
+    background-color: transparent;
+    border-color: #319DD2;
+    color: #319DD2;
+}
+
+#add-btn {
+    width: 30%;
+}
+
+
+
+/* 
+yellow: #d6bc43
+blue: #3071f2
+red #e63640
+teal: #319DD2
+green: #9fbea8 */

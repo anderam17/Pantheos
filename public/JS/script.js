@@ -109,26 +109,32 @@ $("#detentionSelect").on("change", (event) => {
   const renderStudentCard = (teacher, student) => {
 
     if (student.grade === 6) {
-      grade = "sixth"
+      grade = "blue"
     } else if (student.grade === 7) {
-      grade = "seventh"
+      grade = "red"
     } else {
       grade = "eighth"
     }
 
     $("#studentCard").append(
-      `<div data-id= "${student.id}" class="card mt-3 ${grade}">
-        <div class="card-header">
-        <h5>Student: ${student.first_name} ${student.last_name}</h5>
+      `<div data-id= "${student.id}" class="card mt-3 col-md-4 h-75">
+        <div class="card-header text-center">
+        <h5>${student.first_name} ${student.last_name}</h5>
         </div>
-        <div class="card-body" id="cardBody">
+        <div class="card-body ${grade}" id="cardBody">
       <p class="card-text studentGrade" data-grade=${student.grade}>Grade: ${student.grade}</p>
       <p class="card-text teacher">Homeroom Teacher: ${teacher.first_name} ${teacher.last_name}</p>
       <p class="card-text studentDetention">Detention: <span class="hasDetention"> ${student.detention? "Yes" : "No"}</span> </p> 
+      </div>
 
-      <a class="btn btn-primary" data-id=${student.id} id="edit">Edit</a>
-      <a class="btn btn-warning" data-id=${student.id} data-detention=${student.detention} id="detentionBtn" >Detention</a>
-      <a class="btn btn-danger" id = "deleteBtn" data-id=${student.id}>Delete</a>
+      <div class="card-footer mx-auto">
+      <div class="btn-group mx-auto" role="group">
+
+      <button type="button"class="btn blue btn-sm" data-id=${student.id} id="edit">Edit</button>
+      <button type="button" class="btn yellow btn-sm" data-id=${student.id} data-detention=${student.detention} id="detentionBtn" >Detention</button>
+      <button type="button" class="btn red btn-sm" id = "deleteBtn" data-id=${student.id}>Delete</button>
+      </div>
+
       
       </div>
       </div>`);

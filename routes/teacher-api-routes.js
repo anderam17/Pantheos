@@ -9,7 +9,6 @@ module.exports = function (app) {
       const hbsObject = {
         teachers: teachers
       };
-      console.log(teachers);
       res.render("index", hbsObject);
     }).catch((err) => {
       res.json(err);
