@@ -199,9 +199,7 @@ $(document).ready(function () {
   // ------- ADD STUDENT  -----------
   $("#addStudent").on("click", event => {
     event.preventDefault();
-    if (!studentFirst.val().trim() || !studentLast.val().trim() || !studentGrade.val() || !teacher.val().trim() || !studentDetention.val().trim()) {
-      return;
-    }
+    
 
     const newStudent = {
       first_name: $("#student_first_name").val().trim(),
@@ -227,9 +225,7 @@ $(document).ready(function () {
   $("#addTeacher").on("click", event => {
 
     event.preventDefault();
-    if (!studentFirst.val().trim() || !studentLast.val().trim() || !studentGrade.val() || !teacher.val().trim() || !studentDetention.val().trim()) {
-      return;
-    }
+   
 
     const newTeacher = {
       first_name: $("#teacher_first_name").val().trim(),
