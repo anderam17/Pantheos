@@ -70,7 +70,7 @@ header {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    background-image: url("../assets/dot-grid.jpg");
+    background-image: url("../images/dot-grid.jpg");
     
 }
 
