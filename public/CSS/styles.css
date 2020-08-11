@@ -3,6 +3,18 @@
 .body {
     margin: 0;
 }
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+h1 {
+    font-family: 'Aclonica', sans-serif;
+}
+
+h4, .lead{
+    font-family: 'Sen', sans-serif;
+}
+
 
 .yellow {
     background-color: #d6bc43;
@@ -52,6 +64,7 @@ header {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
+    background-image: url("../assets/dot-grid.jpg");
 }
 
 

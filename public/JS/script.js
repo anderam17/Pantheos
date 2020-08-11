@@ -119,7 +119,7 @@ $("#detentionSelect").on("change", (event) => {
     $("#studentCard").append(
       `<div data-id= "${student.id}" class="card mt-3 col-md-4 h-75">
         <div class="card-header text-center">
-        <h5>${student.first_name} ${student.last_name}</h5>
+        <h4>${student.first_name} ${student.last_name}</h4>
         </div>
         <div class="card-body ${grade}" id="cardBody">
       <p class="card-text studentGrade" data-grade=${student.grade}>Grade: ${student.grade}</p>
