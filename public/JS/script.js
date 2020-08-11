@@ -137,7 +137,7 @@ $(document).ready(function () {
         </div>
         <div class="card-body ${grade}" id="cardBody">
       <p class="card-text studentGrade">Grade: <span class="stuGrade">${student.grade} </span> </p>
-      <p class="card-text teacher">Homeroom Teacher: <span class="hrTeacher"> ${teacher.first_name} ${teacher.last_name} </span> </p>
+      <p class="card-text teacher">Homeroom Teacher: <br> <span class="hrTeacher"> ${teacher.first_name} ${teacher.last_name} </span> </p>
       <p class="card-text studentDetention">Detention: <span class="hasDetention"> ${student.detention? "Yes" : "No"}</span> </p> 
       </div>
 

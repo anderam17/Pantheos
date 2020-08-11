@@ -71,8 +71,8 @@ header {
     flex-wrap: wrap;
     flex-direction: row;
     background-image: url("../assets/dot-grid.jpg");
+    
 }
-
 
 .card {
     margin: 10px;
