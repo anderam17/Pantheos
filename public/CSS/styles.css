@@ -6,17 +6,22 @@
 
 .yellow {
     background-color: #d6bc43;
-    color: white;
+    color: whitesmoke;
 }
 
 .red {
     background-color: #DC333D;
-    color: white;
+    color: whitesmoke;
 }
 
 .blue {
-    background-color: #3071f2;
-    color: white;
+    background-color: #36ABD9;
+    color: whitesmoke;
+}
+
+.darkblue {
+    background-color: #2975D9;
+    color: whitesmoke;
 }
 
 h3, h5 {
@@ -66,7 +71,7 @@ header {
 
 
 .sixth {
-    background-color: #3071f2;
+    background-color: #36ABD9;
     color: whitesmoke;
 }
 
@@ -76,7 +81,8 @@ header {
 }
 
 .eighth {
-    background-color:#9fbea8;
+    background-color:#033473;
+    color: whitesmoke;
 }
 
 
@@ -110,15 +116,12 @@ header {
     color: #319DD2;
 }
 
-#add-btn {
-    width: 30%;
-}
-
 
 
 /* 
 yellow: #d6bc43
-blue: #3071f2
+blue: #36ABD9
 red #DC333D
 teal: #319DD2
-green: #9fbea8 */
+green: #9fbea8 
+#36ABD9*/

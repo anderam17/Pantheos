@@ -17,10 +17,7 @@ $(document).ready(function () {
     getTeacher("#teacher-student");
   });
 
-  $("#updateModal").on("shown.bs.modal", (event) => {
-    getTeacher("#update-teacher");
-    getStudentData(studentId);
-  });
+  
 
   // ------- SEARCH BY TEACHER ----------- 
   $("#teacher").on("change", function (event) {
@@ -145,9 +142,12 @@ $(document).ready(function () {
       </div>
 
       <div class="card-footer mx-auto">
-      <div class="btn-group mx-auto" role="group">
-      <button type="button"class="btn blue" data-id=${student.id} data-toggle="modal" data-target="#updateModal" id="edit">Edit</button>
+      <div class="btn-group" role="group">
+
+      <button type="button"class="btn darkblue" data-id=${student.id} data-toggle="modal" data-target="#updateModal" id="edit">Edit</button>
+
       <button type="button" class="btn yellow" data-id=${student.id} data-detention=${student.detention} id="detentionBtn" >Detention</button>
+
       <button type="button" class="btn red" id = "deleteBtn" data-id=${student.id}>Delete</button>
       </div>
 
@@ -320,6 +320,12 @@ $(document).ready(function () {
       });
   };
 
+  $("#updateModal").on("shown.bs.modal", (event) => {
+    $("#update-teacher").empty();
+    getTeacher("#update-teacher");
+    getStudentData(studentId);
+  });
+
   // ------- EDIT STUDENT CLICK EVENT----------- 
 
   $("#studentCard").on("click", "#edit", function (event) {
@@ -333,6 +339,7 @@ $(document).ready(function () {
   $("#updateStudent").on("click", (event) => {
     event.preventDefault();
     handleFormSubmit();
+
   });
 
   getTeacher("#teacher");
