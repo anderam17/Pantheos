@@ -24,6 +24,7 @@
     color: whitesmoke;
 }
 
+
 h3, h5 {
     color: rgb(61, 61, 61);
 }
@@ -62,22 +63,17 @@ header {
 
 .card {
     margin: 10px;
+    height: 300px;
+    
+}
+
+.card-header, .card-footer {
+    background-color: transparent;
 }
 
 .self-container {
     width: 100%;
     margin: 10px 20px;
-}
-
-
-.sixth {
-    background-color: #36ABD9;
-    color: whitesmoke;
-}
-
-.seventh {
-    background-color: #DC333D;
-    color: whitesmoke;
 }
 
 .eighth {

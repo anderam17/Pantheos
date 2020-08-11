@@ -131,7 +131,7 @@ $(document).ready(function () {
     }
 
     $("#studentCard").append(
-      `<div data-id= "${student.id}" class="card mt-3 col-md-4 h-75">
+      `<div data-id= "${student.id}" class="card mt-3 col-md-4">
         <div class="card-header text-center">
         <h5 class="student-name">${student.first_name} ${student.last_name}</h5>
         </div>
@@ -146,7 +146,7 @@ $(document).ready(function () {
 
       <button type="button"class="btn darkblue" data-id=${student.id} data-toggle="modal" data-target="#updateModal" id="edit">Edit</button>
 
-      <button type="button" class="btn yellow" data-id=${student.id} data-detention=${student.detention} id="detentionBtn" >Detention</button>
+      <button type="button" class="btn yellow" data-id=${student.id} data-detention=${student.detention} id="detentionBtn">Detention</button>
 
       <button type="button" class="btn red" id = "deleteBtn" data-id=${student.id}>Delete</button>
       </div>
@@ -199,6 +199,9 @@ $(document).ready(function () {
   // ------- ADD STUDENT  -----------
   $("#addStudent").on("click", event => {
     event.preventDefault();
+    if (!studentFirst.val().trim() || !studentLast.val().trim() || !studentGrade.val() || !teacher.val().trim() || !studentDetention.val().trim()) {
+      return;
+    }
 
     const newStudent = {
       first_name: $("#student_first_name").val().trim(),
@@ -224,6 +227,9 @@ $(document).ready(function () {
   $("#addTeacher").on("click", event => {
 
     event.preventDefault();
+    if (!studentFirst.val().trim() || !studentLast.val().trim() || !studentGrade.val() || !teacher.val().trim() || !studentDetention.val().trim()) {
+      return;
+    }
 
     const newTeacher = {
       first_name: $("#teacher_first_name").val().trim(),
